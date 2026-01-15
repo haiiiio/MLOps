@@ -1,15 +1,16 @@
-from typing import Union
-
 from fastapi import FastAPI
 
 app = FastAPI()
 
+def mock_score(surface: int):
+    return 1
+
+
+@app.get("/features/{surface}")
+def calculate_surface(surface: int):
+    score = mock_score(surface)
+    return {"Square Footage": surface, "Score": score}
 
 @app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+def home():
+    return {"Welcome"}
