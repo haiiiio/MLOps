@@ -3,6 +3,7 @@ from fastapi import FastAPI
 app = FastAPI()
 
 def mock_score(surface: int):
+    #scorer fct logic goes here
     return 1
 
 
